@@ -31,7 +31,6 @@ body {
   border-radius: $border-radius-size + 5;
   position: relative;
   text-align: center;
-  box-shadow: -1px 15px 30px -12px #333;
 }
 
 .card {
@@ -78,6 +77,19 @@ body {
 
   .no-border {
     border-right: none;
+  }
+}
+
+.wrapper-person {
+  text-align: center;
+
+  .card-stats {
+    border-radius: 14px;
+    margin-top: 30px;
+  }
+
+  .description {
+    margin-bottom: 30px;
   }
 }
 
