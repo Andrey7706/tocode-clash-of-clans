@@ -7,19 +7,18 @@
       <div>
         <router-link to="/" class="btn btnPrimary">Back To Home</router-link>
       </div>
-      <div class="card-stats">
-        <div class="one-third" v-for="(stat, index) in item.info" :key="index">
-          <div class="stat-value">{{ stat.value }}</div>
-          <div class="stat">{{ stat.title }}</div>
-        </div>
-      </div>
+      <Stats :item="item"></Stats>
     </div>
   </div>
 </template>
 
 <script>
   import items from '../seeders/items.js';
+  import AppStats from '../components/UI/AppStats.vue';
   export default {
+    components: {
+      Stats: AppStats
+    },
     data() {
       return {
         item: null
@@ -28,7 +27,12 @@
     created() {
       const alias = this.$route.params.itemAlias
       const item = items.find(el => el.alias === alias)
-      this.item = item
-    }
+
+      if (!item) {
+        this.$router.replace({ name: 'NotFound' })
+      } else {
+        this.item = item
+      }
+    },
   };
 </script>
